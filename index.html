@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protocolo Pós-Mounjaro — Não Deixe o Peso Voltar</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9973E;
+    --gold-light: #F5E6C8;
+    --gold-dark: #8B6914;
+    --dark: #0D0D1A;
+    --dark2: #1A1A2E;
+    --red: #FF4444;
+    --green: #2ECC71;
+    --white: #FFFFFF;
+    --gray: #AAAAAA;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--dark);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* URGENCY BAR */
+  .urgency-bar {
+    background: var(--red);
+    text-align: center;
+    padding: 12px;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    animation: pulse-bar 2s infinite;
+  }
+  @keyframes pulse-bar {
+    0%, 100% { background: #FF4444; }
+    50% { background: #CC0000; }
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(180deg, #0D0D1A 0%, #1A1A2E 100%);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(201,151,62,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 8vw, 80px);
+    line-height: 1.0;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .hero h1 span { color: var(--gold); }
+
+  .hero-sub {
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--gold-light);
+    max-width: 640px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  /* SOCIAL PROOF BAR */
+  .social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+    margin: 32px 0;
+    padding: 24px;
+    background: rgba(201,151,62,0.08);
+    border: 1px solid rgba(201,151,62,0.2);
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+  }
+  .social-item {
+    text-align: center;
+  }
+  .social-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    display: block;
+  }
+  .social-label {
+    font-size: 12px;
+    color: var(--gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* BEFORE/AFTER */
+  .before-after {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 40px auto;
+    max-width: 700px;
+  }
+  .ba-box {
+    flex: 1;
+    min-width: 200px;
+    padding: 24px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .ba-box.before {
+    background: rgba(255,68,68,0.08);
+    border: 2px solid rgba(255,68,68,0.3);
+  }
+  .ba-box.after {
+    background: rgba(46,204,113,0.08);
+    border: 2px solid rgba(46,204,113,0.3);
+  }
+  .ba-label {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ba-box.before .ba-label { color: var(--red); }
+  .ba-box.after .ba-label { color: var(--green); }
+  .ba-items { list-style: none; }
+  .ba-items li {
+    font-size: 14px;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-weight: 600;
+  }
+  .ba-arrow {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+  }
+
+  /* SECTIONS */
+  section {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 60px 20px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0;
+  }
+
+  /* PROBLEM SECTION */
+  .problem {
+    background: rgba(255,68,68,0.04);
+    border-left: 4px solid var(--red);
+    padding: 24px 28px;
+    border-radius: 0 12px 12px 0;
+    margin: 24px 0;
+  }
+  .problem p {
+    margin: 0;
+    color: rgba(255,255,255,0.9);
+  }
+
+  /* BULLETS */
+  .check-list { list-style: none; margin: 24px 0; }
+  .check-list li {
+    padding: 10px 0;
+    padding-left: 36px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.9);
+  }
+  .check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 900;
+    font-size: 18px;
+  }
+
+  .x-list { list-style: none; margin: 24px 0; }
+  .x-list li {
+    padding: 10px 0;
+    padding-left: 36px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.7);
+  }
+  .x-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-weight: 900;
+    font-size: 18px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: linear-gradient(135deg, rgba(201,151,62,0.15), rgba(201,151,62,0.05));
+    border: 1px solid rgba(201,151,62,0.3);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 32px 0;
+    text-align: center;
+  }
+  .highlight-box .big-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  /* WHAT'S INSIDE */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .module-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,151,62,0.2);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .module-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+  }
+  .module-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: rgba(201,151,62,0.2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .module-title {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .module-desc {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.6;
+    font-weight: 600;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin: 32px 0;
+  }
+  .testimonial {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .stars { color: var(--gold); font-size: 18px; margin-bottom: 12px; }
+  .testimonial-text {
+    font-size: 14px;
+    line-height: 1.7;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 16px;
+    font-weight: 600;
+  }
+  .testimonial-author {
+    font-weight: 800;
+    font-size: 13px;
+    color: var(--gold);
+  }
+  .testimonial-role {
+    font-size: 12px;
+    color: var(--gray);
+  }
+
+  /* PRICE SECTION */
+  .price-section {
+    background: linear-gradient(135deg, #1A1A2E, #0D0D1A);
+    border: 2px solid var(--gold);
+    border-radius: 24px;
+    padding: 48px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-section::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(201,151,62,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .price-old {
+    font-size: 20px;
+    color: var(--gray);
+    text-decoration: line-through;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .price-new {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-installments {
+    font-size: 14px;
+    color: var(--gray);
+    margin-bottom: 32px;
+    font-weight: 600;
+  }
+
+  /* CTA BUTTON */
+  .cta-btn {
+    display: block;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    padding: 20px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    margin: 0 auto 16px;
+    max-width: 500px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 32px rgba(201,151,62,0.3);
+    animation: pulse-btn 2.5s infinite;
+  }
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(201,151,62,0.5);
+  }
+  @keyframes pulse-btn {
+    0%, 100% { box-shadow: 0 8px 32px rgba(201,151,62,0.3); }
+    50% { box-shadow: 0 8px 48px rgba(201,151,62,0.6); }
+  }
+
+  .cta-sub {
+    font-size: 13px;
+    color: var(--gray);
+    font-weight: 700;
+  }
+
+  /* GUARANTEE */
+  .guarantee {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: rgba(46,204,113,0.06);
+    border: 1px solid rgba(46,204,113,0.2);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 32px 0;
+  }
+  .guarantee-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+  }
+  .guarantee-title {
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--green);
+    margin-bottom: 6px;
+  }
+  .guarantee-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    margin: 0;
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .faq-q {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--gold-light);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    font-weight: 600;
+  }
+
+  /* SCARCITY */
+  .scarcity {
+    background: rgba(255,68,68,0.08);
+    border: 1px solid rgba(255,68,68,0.3);
+    border-radius: 12px;
+    padding: 20px 24px;
+    text-align: center;
+    margin: 24px 0;
+  }
+  .scarcity p {
+    color: #FF8888;
+    font-weight: 800;
+    font-size: 15px;
+    margin: 0;
+  }
+
+  /* TIMER */
+  .timer-box {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .timer-unit {
+    text-align: center;
+    background: rgba(201,151,62,0.1);
+    border: 1px solid rgba(201,151,62,0.3);
+    border-radius: 8px;
+    padding: 12px 20px;
+    min-width: 72px;
+  }
+  .timer-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 40px;
+    color: var(--gold);
+    display: block;
+    line-height: 1;
+  }
+  .timer-label {
+    font-size: 10px;
+    color: var(--gray);
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* STICKY FOOTER */
+  .sticky-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--dark2);
+    border-top: 2px solid var(--gold);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 100;
+    flex-wrap: wrap;
+  }
+  .sticky-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    color: var(--gold);
+  }
+  .sticky-btn {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .before-after { flex-direction: column; }
+    .ba-arrow { transform: rotate(90deg); }
+    .sticky-footer { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- URGENCY BAR -->
+<div class="urgency-bar">
+  🔥 OFERTA ESPECIAL DE LANÇAMENTO — Apenas R$ 47,00 por tempo limitado
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Para quem usa ou usou Mounjaro / Tirzepatida</div>
+  <h1>Não deixe o<br><span>peso voltar.</span></h1>
+  <p class="hero-sub">
+    O protocolo científico de 12 semanas que protege tudo que você conquistou — antes, durante e depois do tratamento.
+  </p>
+
+  <div class="social-bar">
+    <div class="social-item">
+      <span class="social-num">12</span>
+      <span class="social-label">Semanas de protocolo</span>
+    </div>
+    <div class="social-item">
+      <span class="social-num">7</span>
+      <span class="social-label">Capítulos completos</span>
+    </div>
+    <div class="social-item">
+      <span class="social-num">+50</span>
+      <span class="social-label">Estratégias práticas</span>
+    </div>
+    <div class="social-item">
+      <span class="social-num">7 dias</span>
+      <span class="social-label">De garantia total</span>
+    </div>
+  </div>
+
+  <a href="https://pay.cakto.com.br/sy99esk_860394" class="cta-btn">
+    QUERO MEU PROTOCOLO AGORA →
+  </a>
+  <p class="cta-sub">🔒 Pagamento 100% seguro · Acesso imediato após a compra</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- PROBLEM -->
+<section>
+  <div class="section-tag">O problema que ninguém te conta</div>
+  <h2>O Mounjaro funciona.<br>O que vem depois, <span style="color:var(--red)">assusta.</span></h2>
+
+  <div class="problem">
+    <p>Estudos clínicos mostram que após a interrupção do GLP-1, uma parcela significativa dos pacientes recupera o peso perdido nos primeiros 12 a 18 meses. Não é fraqueza. É biologia.</p>
+  </div>
+
+  <p>Quando você para o tratamento, o apetite volta com força total. O metabolismo desacelera. O cérebro começa a defender o peso antigo. E a maioria das pessoas, sem um plano claro, regride.</p>
+
+  <p><strong style="color:var(--white)">Você já investiu tempo, dinheiro e esforço no tratamento. Seria uma pena perder tudo isso por falta de um protocolo de manutenção.</strong></p>
+
+  <div class="before-after">
+    <div class="ba-box before">
+      <div class="ba-label">Sem o protocolo</div>
+      <ul class="ba-items">
+        <li>Fome intensa voltando</li>
+        <li>Peso recuperado em meses</li>
+        <li>Ansiedade alimentar</li>
+        <li>Metabolismo travado</li>
+        <li>Sensação de fracasso</li>
+      </ul>
+    </div>
+    <div class="ba-arrow">→</div>
+    <div class="ba-box after">
+      <div class="ba-label">Com o protocolo</div>
+      <ul class="ba-items">
+        <li>Saciedade controlada</li>
+        <li>Peso estável a longo prazo</li>
+        <li>Relação saudável com comida</li>
+        <li>Metabolismo ativo</li>
+        <li>Confiança e autonomia</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHAT'S INSIDE -->
+<section>
+  <div class="section-tag">O que está incluído</div>
+  <h2>Tudo que você precisa.<br>Num só lugar.</h2>
+
+  <div class="modules-grid">
+    <div class="module-card">
+      <div class="module-num">01</div>
+      <div class="module-title">Por Que o Rebote Acontece</div>
+      <div class="module-desc">A ciência do GLP-1 e o que muda no metabolismo após parar. Entenda a biologia antes de agir.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">02</div>
+      <div class="module-title">Os Primeiros 30 Dias</div>
+      <div class="module-desc">A janela crítica após encerrar o tratamento. O que fazer exatamente nas primeiras semanas.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">03</div>
+      <div class="module-title">Alimentação Sem Restrição</div>
+      <div class="module-desc">Como reprogramar sua relação com comida sem dietas extremas ou contagem obsessiva.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">04</div>
+      <div class="module-title">O Papel do Músculo</div>
+      <div class="module-desc">Por que treino de força é inegociável no pós-tratamento. O músculo trabalha 24h por dia.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">05</div>
+      <div class="module-title">Sono, Estresse e Cortisol</div>
+      <div class="module-desc">Os sabotadores invisíveis do peso. Como dormir e gerenciar estresse para manter os resultados.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">06</div>
+      <div class="module-title">Protocolo de 12 Semanas</div>
+      <div class="module-desc">Plano semana a semana com ações concretas. Você sabe exatamente o que fazer cada dia.</div>
+    </div>
+    <div class="module-card">
+      <div class="module-num">07</div>
+      <div class="module-title">Sinais de Alerta</div>
+      <div class="module-desc">Como identificar recaída metabólica cedo e quando buscar ajuda profissional.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-tag">Quem já aplicou</div>
+  <h2>Resultados reais de<br>pessoas reais.</h2>
+
+  <div class="testimonials">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Perdi 18kg com o Mounjaro e estava apavorada de tudo voltar. O protocolo me deu um plano claro. Já faz 4 meses e mantive tudo."</p>
+      <div class="testimonial-author">Carla M.</div>
+      <div class="testimonial-role">São Paulo, SP</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"Voltei a sentir fome depois que parei. Achei que ia engordar tudo de volta. Com o protocolo entendi o que estava acontecendo e consegui controlar."</p>
+      <div class="testimonial-author">Fernanda R.</div>
+      <div class="testimonial-role">Belo Horizonte, MG</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">"O capítulo de musculação mudou tudo pra mim. Nunca pensei que o músculo faria tanta diferença no metabolismo. Vale cada centavo."</p>
+      <div class="testimonial-author">Patricia S.</div>
+      <div class="testimonial-role">Curitiba, PR</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICE -->
+<section>
+  <div class="section-tag">Investimento</div>
+  <h2>Menos que uma consulta.<br>Resultado para <span style="color:var(--gold)">sempre.</span></h2>
+
+  <!-- TIMER -->
+  <p style="text-align:center; color:var(--gold); font-weight:800; margin-bottom:8px;">⏰ Oferta de lançamento expira em:</p>
+  <div class="timer-box">
+    <div class="timer-unit">
+      <span class="timer-num" id="hours">23</span>
+      <span class="timer-label">Horas</span>
+    </div>
+    <div class="timer-unit">
+      <span class="timer-num" id="minutes">59</span>
+      <span class="timer-label">Minutos</span>
+    </div>
+    <div class="timer-unit">
+      <span class="timer-num" id="seconds">59</span>
+      <span class="timer-label">Segundos</span>
+    </div>
+  </div>
+
+  <div class="price-section">
+    <div class="price-old">De R$ 197,00</div>
+    <div class="price-new">R$ 47</div>
+    <div class="price-installments">Pagamento único · Acesso vitalício</div>
+
+    <div class="scarcity">
+      <p>⚠️ Preço promocional de lançamento. Pode aumentar a qualquer momento.</p>
+    </div>
+
+    <a href="https://pay.cakto.com.br/sy99esk_860394" class="cta-btn">
+      SIM! QUERO MEU PROTOCOLO AGORA →
+    </a>
+    <p class="cta-sub" style="margin-top:12px;">🔒 Pagamento seguro · Pix, Cartão ou Boleto · Acesso imediato</p>
+
+    <div class="guarantee" style="margin-top:32px; text-align:left;">
+      <div class="guarantee-icon">🛡️</div>
+      <div>
+        <div class="guarantee-title">Garantia de 7 dias sem perguntas</div>
+        <p class="guarantee-text">Se por qualquer motivo você não ficar satisfeito nos primeiros 7 dias após a compra, devolvemos 100% do seu dinheiro. Sem burocracia, sem questionamentos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT YOU GET -->
+  <div class="highlight-box" style="margin-top:32px;">
+    <span class="big-text">O que você leva hoje:</span>
+    <ul class="check-list" style="text-align:left; max-width:400px; margin:16px auto 0;">
+      <li>E-book completo com 7 capítulos</li>
+      <li>Protocolo prático de 12 semanas</li>
+      <li>Guia de alimentação pós-GLP-1</li>
+      <li>Plano de treino para iniciantes</li>
+      <li>Checklist semanal de acompanhamento</li>
+      <li>Acesso vitalício e atualizações grátis</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHY NOT FREE -->
+<section>
+  <div class="section-tag">Você não precisa disso se...</div>
+  <h2>Este protocolo <span style="color:var(--red)">não é para você</span> se:</h2>
+  <ul class="x-list">
+    <li>Você nunca usou Mounjaro, Ozempic ou tirzepatida</li>
+    <li>Você quer uma solução mágica sem nenhum esforço</li>
+    <li>Você já tem acompanhamento nutricional e médico completo</li>
+    <li>Você está satisfeito com o risco de regredir sem um plano</li>
+  </ul>
+
+  <div style="margin-top:40px;">
+    <div class="section-tag">Mas é exatamente para você se:</div>
+    <ul class="check-list">
+      <li>Está usando Mounjaro e quer se preparar para o pós</li>
+      <li>Acabou de parar e sente o apetite voltando</li>
+      <li>Tem medo de perder os resultados conquistados</li>
+      <li>Quer um plano prático, sem achismos, baseado em ciência</li>
+      <li>Não tem acompanhamento profissional intensivo</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section>
+  <div class="section-tag">Dúvidas frequentes</div>
+  <h2>Perguntas e<br>respostas.</h2>
+
+  <div class="faq-item">
+    <div class="faq-q">Como recebo o material após a compra? <span>+</span></div>
+    <div class="faq-a">Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link para download do e-book em PDF. O acesso é instantâneo.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Funciona para quem ainda está no tratamento? <span>+</span></div>
+    <div class="faq-a">Sim! O protocolo foi desenvolvido tanto para quem está usando e quer se preparar para o pós, quanto para quem já encerrou o tratamento e quer manter os resultados.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Preciso ser nutricionista ou médico para aplicar? <span>+</span></div>
+    <div class="faq-a">Não. O protocolo foi escrito em linguagem acessível, com ações práticas e diretas. Qualquer pessoa consegue aplicar no dia a dia.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">E se eu não gostar? <span>+</span></div>
+    <div class="faq-a">Você tem 7 dias de garantia total. Se por qualquer motivo não ficar satisfeito, basta enviar um e-mail e devolvemos 100% do seu investimento. Sem questionamentos.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Este e-book substitui o acompanhamento médico? <span>+</span></div>
+    <div class="faq-a">Não. O protocolo é educativo e complementar. Sempre consulte seu médico antes de fazer alterações no tratamento. Este material não substitui orientação profissional de saúde.</div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section style="text-align:center; padding-bottom:120px;">
+  <h2>Chegou até aqui.<br><span style="color:var(--gold)">Tome a decisão certa.</span></h2>
+  <p style="max-width:500px; margin:0 auto 32px;">Você investiu no tratamento. Investiu no seu corpo. Agora invista em manter o que conquistou — por apenas R$ 47,00.</p>
+
+  <a href="https://pay.cakto.com.br/sy99esk_860394" class="cta-btn">
+    GARANTIR MEU PROTOCOLO AGORA →
+  </a>
+  <p class="cta-sub" style="margin-top:12px;">🛡️ 7 dias de garantia · 🔒 Pagamento seguro · ⚡ Acesso imediato</p>
+</section>
+
+<!-- STICKY FOOTER -->
+<div class="sticky-footer">
+  <div>
+    <div style="font-size:12px; color:var(--gray); font-weight:700;">Protocolo Pós-Mounjaro</div>
+    <div class="sticky-price">R$ 47,00</div>
+  </div>
+  <a href="https://pay.cakto.com.br/sy99esk_860394" class="sticky-btn">COMPRAR AGORA →</a>
+</div>
+
+<script>
+  // COUNTDOWN TIMER
+  function getEndTime() {
+    const stored = localStorage.getItem('ppm_end');
+    if (stored) return parseInt(stored);
+    const end = Date.now() + 24 * 60 * 60 * 1000;
+    localStorage.setItem('ppm_end', end);
+    return end;
+  }
+
+  const endTime = getEndTime();
+
+  function updateTimer() {
+    const now = Date.now();
+    const diff = Math.max(0, endTime - now);
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  }
+
+  updateTimer();
+  setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>
